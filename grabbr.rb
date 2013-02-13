@@ -43,4 +43,16 @@ client = Soundcloud.new({
 # print logged in username
 puts client.get('/me').username
 
-puts client.get('/playlists/405726.json')
+playlist_data = client.get('/playlists/3327692.json')
+
+puts "Title: #{playlist_data.title}"
+
+puts "\nDescription:\n #{playlist_data.description}"
+
+puts "\nTracks:\n"
+
+playlist_data.tracks.each do |track|
+  # http://developers.soundcloud.com/docs/api/reference#tracks
+
+
+end
