@@ -1,3 +1,4 @@
 source :rubygems
 
-gem 'soundcloud'
+gem "io-console", :require => "io/console"
+gem "soundcloud"

@@ -34,11 +34,13 @@ token = STDIN.noecho(&:gets)
 $stderr.puts ""
 
 client = Soundcloud.new({
-  :client_id      => 9cff615532437339d2212bd52621cada,
-  :client_secret  => 6de206d478aca32cdd83494966516d89,
-  :username       => user
-  :password       => token
+  :client_id      => "9cff615532437339d2212bd52621cada",
+  :client_secret  => "6de206d478aca32cdd83494966516d89",
+  :username       => user,
+  :password       => token.strip,
 })
 
 # print logged in username
 puts client.get('/me').username
+
+puts client.get('/playlists/405726.json')
