@@ -41,7 +41,7 @@ client = Soundcloud.new({
 })
 
 # print logged in username
-puts client.get('/me').username
+puts "Logged in as: #{client.get('/me').username}"
 
 playlist_data = client.get('/playlists/3327692.json')
 
@@ -54,5 +54,10 @@ puts "\nTracks:\n"
 playlist_data.tracks.each do |track|
   # http://developers.soundcloud.com/docs/api/reference#tracks
 
+  puts "\t#{track.title} \n\t\t- #{track.download_url}"
+  puts ""
 
+  File.open("#{track.permalink}.mp3", "w") do |file|
+    file << client.get(track.download_url)
+  end
 end
