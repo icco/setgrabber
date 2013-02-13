@@ -49,15 +49,13 @@ puts "Title: #{playlist_data.title}"
 
 puts "\nDescription:\n #{playlist_data.description}"
 
-puts "\nTracks:\n"
-
+pbar = ProgressBar.new("Tracks", playlist_data.tracks.count)
 playlist_data.tracks.each do |track|
-  # http://developers.soundcloud.com/docs/api/reference#tracks
 
-  puts "\t#{track.title} \n\t\t- #{track.download_url}"
-  puts ""
-
-  File.open("#{track.permalink}.mp3", "w") do |file|
+  filename = "#{track.permalink}.mp3"
+  File.open(filename, "w") do |file|
     file << client.get(track.download_url)
   end
+
+  pbar.inc
 end
