@@ -41,7 +41,9 @@ client = Soundcloud.new({
 })
 
 # print logged in username
+puts ""
 puts "Logged in as: #{client.get('/me').username}"
+puts ""
 
 playlist_data = client.get('/playlists/3327692.json')
 
