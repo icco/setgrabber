@@ -14,6 +14,11 @@ OptionParser.new do |opts|
     options[:user] = user
   end
 
+  options[:url] = nil
+  opts.on( '-s', '--set_url http://...', 'URL to set you want to grab.' ) do |url|
+    options[:url] = url
+  end
+
   opts.on( '-h', '--help', 'Display this screen' ) do
     puts opts
     exit
@@ -45,7 +50,15 @@ puts ""
 puts "Logged in as: #{client.get('/me').username}"
 puts ""
 
-playlist_data = client.get('/playlists/3327692.json')
+if options[:url].nil?
+  $stderr.print "Enter the set you wish to get: "
+  url = gets.chomp
+else
+  url = options[:url]
+end
+
+# http://developers.soundcloud.com/docs/api/reference#resolve
+playlist_data = client.get('/resolve', :url => url)
 
 puts "Title: #{playlist_data.title}"
 
