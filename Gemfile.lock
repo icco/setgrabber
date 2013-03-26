@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    hashie (2.0.2)
+    hashie (2.0.3)
     httmultiparty (0.3.8)
       httparty (>= 0.7.3)
       multipart-post
@@ -9,7 +9,7 @@ GEM
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     io-console (0.4.2)
-    multi_json (1.6.1)
+    multi_json (1.7.2)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
     progressbar (0.20.0)
