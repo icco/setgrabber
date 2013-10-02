@@ -40,39 +40,43 @@ token = STDIN.noecho(&:gets)
 
 $stderr.puts ""
 
-client = Soundcloud.new({
-  :client_id      => "9cff615532437339d2212bd52621cada",
-  :client_secret  => "6de206d478aca32cdd83494966516d89",
-  :username       => user,
-  :password       => token.strip,
-})
+begin
+  client = Soundcloud.new({
+    :client_id      => "9cff615532437339d2212bd52621cada",
+    :client_secret  => "6de206d478aca32cdd83494966516d89",
+    :username       => user,
+    :password       => token.strip,
+  })
 
-# print logged in username
-puts ""
-puts "Logged in as: #{client.get('/me').username}"
-puts ""
+  # print logged in username
+  puts ""
+  puts "Logged in as: #{client.get('/me').username}"
+  puts ""
 
-if options[:url].nil?
-  $stderr.print "Enter the set you wish to get: "
-  url = gets.chomp
-else
-  url = options[:url]
-end
-
-# http://developers.soundcloud.com/docs/api/reference#resolve
-playlist_data = client.get('/resolve', :url => url)
-
-puts "Title: #{playlist_data.title}"
-
-puts "\nDescription:\n #{playlist_data.description}"
-
-pbar = ProgressBar.new("Tracks", playlist_data.tracks.count)
-playlist_data.tracks.each do |track|
-
-  filename = "#{track.permalink}.mp3"
-  File.open(filename, "w") do |file|
-    file << client.get(track.download_url)
+  if options[:url].nil?
+    $stderr.print "Enter the set you wish to get: "
+    url = gets.chomp
+  else
+    url = options[:url]
   end
 
-  pbar.inc
+  # http://developers.soundcloud.com/docs/api/reference#resolve
+  playlist_data = client.get('/resolve', :url => url)
+
+  puts "Title: #{playlist_data.title}"
+
+  puts "\nDescription:\n #{playlist_data.description}"
+
+  pbar = ProgressBar.new("Tracks", playlist_data.tracks.count)
+  playlist_data.tracks.each do |track|
+
+    filename = "#{track.permalink}.mp3"
+    File.open(filename, "w") do |file|
+      file << client.get(track.download_url)
+    end
+
+    pbar.inc
+  end
+rescue SoundCloud::ResponseError => e
+  puts e.message
 end
