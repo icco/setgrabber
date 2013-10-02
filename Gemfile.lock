@@ -1,5 +1,13 @@
+GIT
+  remote: https://github.com/soundcloud/soundcloud-ruby.git
+  revision: 6f4c2fc2591e6bdb080cd256f1956cd101d5c895
+  specs:
+    soundcloud (0.3.2)
+      hashie (~> 2.0)
+      httmultiparty (~> 0.3.0)
+
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     hashie (2.0.5)
     httmultiparty (0.3.10)
@@ -13,9 +21,6 @@ GEM
     multi_xml (0.5.5)
     multipart-post (1.2.0)
     progressbar (0.21.0)
-    soundcloud (0.3.2)
-      hashie (~> 2.0)
-      httmultiparty (~> 0.3.0)
 
 PLATFORMS
   ruby
@@ -23,4 +28,4 @@ PLATFORMS
 DEPENDENCIES
   io-console
   progressbar
-  soundcloud
+  soundcloud!
