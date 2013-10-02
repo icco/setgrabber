@@ -61,7 +61,7 @@ begin
   end
 
   # http://developers.soundcloud.com/docs/api/reference#resolve
-  playlist_data = client.get('/resolve.json', :url => url)
+  playlist_data = client.get('/resolve', :url => url)
 
   puts "Title: #{playlist_data.title}"
 
