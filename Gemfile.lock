@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/soundcloud/soundcloud-ruby.git
-  revision: 6f4c2fc2591e6bdb080cd256f1956cd101d5c895
+  revision: 4a9bc6b9a5f0b715558c32d6b92ff5f8bee86fca
   specs:
     soundcloud (0.3.2)
       hashie (~> 2.0)
@@ -13,13 +13,13 @@ GEM
     httmultiparty (0.3.10)
       httparty (>= 0.7.3)
       multipart-post
-    httparty (0.11.0)
-      multi_json (~> 1.0)
+    httparty (0.12.0)
+      json (~> 1.8)
       multi_xml (>= 0.5.2)
     io-console (0.4.2)
-    multi_json (1.8.0)
+    json (1.8.1)
     multi_xml (0.5.5)
-    multipart-post (1.2.0)
+    multipart-post (2.0.0)
     progressbar (0.21.0)
 
 PLATFORMS
